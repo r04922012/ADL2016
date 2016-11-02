@@ -321,7 +321,6 @@ def main(_):
   with tf.Graph().as_default(), tf.Session() as session:
     with tf.device("/cpu:0"):
       model = Word2Vec(opts, session)
-      model.read_analogies() # Read analogy questions
     for _ in xrange(opts.epochs_to_train):
       model.train()  # Process one epoch
     # Perform a final save.
@@ -329,7 +328,7 @@ def main(_):
       
     voc_list=[]
     for voc_index in xrange(opts.vocab_size):
-      voc_list.append(tf.compat.as_text(opts.vocab_words[i]).encode("utf-8"))
+      voc_list.append(tf.compat.as_text(opts.vocab_words[voc_index]).encode("utf-8"))
 
     with open('tmp_dir/tmp_word2vec.txt','w') as output:
       for voc_index in xrange(opts.vocab_size):

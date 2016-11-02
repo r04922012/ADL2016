@@ -1,5 +1,4 @@
 #/bin/bash
-
 mkdir $2
 mkdir tmp_dir
 
